@@ -141,11 +141,11 @@ function bfinder2(m,Pr,Pso,Is,ta,to){
     var Po=14.69595;
     var plot;
     plot=integral(b1,Pso,ta,to,proximity);
-    console.log(plot);
+    console.log(Is,plot);
     plot=integral((b2+b1)/2,Pso,ta,to,proximity);
-    console.log(plot);
+    console.log(Is,plot);
     plot=integral(b2,Pso,ta,to,proximity);
-    console.log(plot);
+    console.log(Is,plot);
     //while(Math.abs(Is-plot)>1){
     //    plot=integral((b2+b1)/2,Pso,Po,ta,to,proximity);
     //    if(Is<plot){
@@ -172,17 +172,21 @@ function equation(t,b,Pso,ta,to){
 
 
 
-function PointCreator(Pr,Pso,Is,ta,to){
+function PointCreator(Pr,Po,Pso,Is,ta,to,b){
     var Ps=[[]];
     ps[0][0]=ta;
-    ps[0][1]=Pso;
+    ps[0][1]=Po;
     ps[0][2]=Pr;
     ps[100][0]=to;
     ps[100][1]=0;
     ps[100][2]=0;
-    var step = to/100;
-    for (t=ta;t<to;t=t+step){
-
+    var i =1;
+    var step = to/99;
+    for (t=ta;t<ta+to;t=t+step){
+        ps[i][2]=equation(t,b,Pso,ta,to);
+        ps[i][0]=t;
+        ps[i][1]=Pso
+        i++;
     }
 }
 
