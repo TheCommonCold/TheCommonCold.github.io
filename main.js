@@ -21,8 +21,10 @@ function process(){
     //outputData.sort(sortFunction);
     var data = transposeJSON(graphData);
     Chart1(data,target[0]);
-    bfinder2(input2,data[target[0]][4],data[target[0]][5],data[target[0]][2],data[target[0]][6],data[target[0]][7]);
+    var b=bfinder(input,input2,data[target[0]][4],data[target[0]][5],data[target[0]][2],data[target[0]][6],data[target[0]][7]);
     present(outputData);
+    var ps = PointCreator(data[target[0]][4],data[target[0]][5],data[target[0]][2],data[target[0]][6],data[target[0]][7],b);
+    Chart2(ps);
 }
 
 function present(outputData){
@@ -115,46 +117,22 @@ function Chart1(graphData,row){
     }
 }
 
-function bfinder(m,Pr,Pso,Is,ta,to){
-    var b1=0;
-    var b2=9.9;
+function bfinder(input,m,Pr,Pso,Is,ta,to){
+    var b1=0.1;
+    var b2=20;
     var proximity=0.00001;
-    var Po=14.69595;
-    var plot=integral((b2+b1)/2,Pso,Po,ta,to,proximity);
-    Is = 686870;
-    Pso = 6473233.7;
-
-    console.log(Is*Math.pow(m,(1/3)));
-    //console.log(equationtest(0),equationtest(2));
-    //console.log(integraltest(0,2,proximity));
-    console.log(equation(ta, 1, Pso-Po, ta/1000, to/1000)+Po);
-    //console.log(((Pso*to)/Math.pow(1,2))*(1-1+Math.pow(Math.E,-1)));
-    //console.log(integral(b1,Pso-Po,ta,to,proximity));
-    console.log(integral(b2,Pso-Po,ta/1000,to/1000,proximity));
-    //integral (from 0.017 to 0.017+15.351) (50.023-14.69595)*(1-((t-0.017)/15.351))*(E^(-9.9*((t-0.017)/15.351))) dt
-}
-
-function bfinder2(m,Pr,Pso,Is,ta,to){
-    var b1=0;
-    var b2=9.9;
-    var proximity=0.00001;
-    var Po=14.69595;
     var plot;
-    plot=integral(b1,Pso,ta,to,proximity);
-    console.log(Is,plot);
-    plot=integral((b2+b1)/2,Pso,ta,to,proximity);
-    console.log(Is,plot);
     plot=integral(b2,Pso,ta,to,proximity);
-    console.log(Is,plot);
-    //while(Math.abs(Is-plot)>1){
-    //    plot=integral((b2+b1)/2,Pso,Po,ta,to,proximity);
-    //    if(Is<plot){
-    //        b1=(b2+b1)/2;
-    //    }else{
-    //        b2=(b2+b1)/2;
-    //    }
-    //   console.log(Is,plot,b1,b2);
-    //}
+    while(Math.abs(Is-plot)>1){
+        plot=integral((b2+b1)/2,Pso,ta,to,proximity);
+        if(Is<plot){
+            b1=(b2+b1)/2;
+        }else{
+            b2=(b2+b1)/2;
+        }
+       console.log(Is,plot,b1,b2);
+    }
+    return (b2+b1)/2;
 }
 
 function integral(b,Pso,ta,to,proximity){
@@ -172,32 +150,50 @@ function equation(t,b,Pso,ta,to){
 
 
 
-function PointCreator(Pr,Po,Pso,Is,ta,to,b){
-    var Ps=[[]];
-    ps[0][0]=ta;
-    ps[0][1]=Po;
-    ps[0][2]=Pr;
-    ps[100][0]=to;
-    ps[100][1]=0;
-    ps[100][2]=0;
+function PointCreator(Pr,Pso,Is,ta,to,b){
+    var ps=[];
+    ps[0]=[ta,Pso,0+Pso];
+
     var i =1;
     var step = to/99;
     for (t=ta;t<ta+to;t=t+step){
-        ps[i][2]=equation(t,b,Pso,ta,to);
-        ps[i][0]=t;
-        ps[i][1]=Pso
+        ps[i]=[t,Pso,equation(t,b,Pso,ta,to)+Pso];
         i++;
     }
+    return ps;
 }
 
-function Chart2(Pr,Pso,Is,ta,to){
-    var data = google.visualization.arrayToDataTable([
-        ['Year', 'Sales', 'Expenses'],
-        ['2013',  1000,      400],
-        ['2014',  1170,      460],
-        ['2015',  660,       1120],
-        ['2016',  1030,      540]
-    ]);
-    var chart = new google.visualization.AreaChart(document.getElementById('chart_div2'));
-    chart.draw(data, options);
+function Chart2(ps){
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawCrosshairs);
+    function drawCrosshairs() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 't');
+        data.addColumn('number', 'ps');
+        data.addColumn('number', 'Pso');
+
+
+        data.addRows(ps);
+
+        var options = {
+            hAxis: {
+                title: 't',
+            },
+            vAxis: {
+            },
+            crosshair: {
+                color: '#000',
+                trigger: 'selection'
+            },
+            width: '100%',
+            height: 800,
+            interpolateNulls: true,
+            selectionMode: 'multiple'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+
+        chart.draw(data, options);
+
+    }
 }
