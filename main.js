@@ -23,7 +23,7 @@ function process(){
     Chart1(data,target[0]);
     var b=bfinder(input,input2,data[target[0]][4],data[target[0]][5],data[target[0]][2],data[target[0]][6],data[target[0]][7]);
     present(outputData);
-    var ps = PointCreator(data[target[0]][4],data[target[0]][5],data[target[0]][2],data[target[0]][6],data[target[0]][7],b);
+    var ps = PointCreator(data[target[0]][4],1013,data[target[0]][2],data[target[0]][6],data[target[0]][7],b);
     Chart2(ps);
 }
 
@@ -152,9 +152,11 @@ function equation(t,b,Pso,ta,to){
 
 function PointCreator(Pr,Pso,Is,ta,to,b){
     var ps=[];
-    ps[0]=[ta,Pso,0+Pso];
+    ps[0]=[0,Pso,Pso];
+    ps[1]=[ta,Pso,Pso];
+    ps[2]=[ta,Pso,0+Pso];
 
-    var i =1;
+    var i =3;
     var step = to/99;
     for (t=ta;t<ta+to;t=t+step){
         ps[i]=[t,Pso,equation(t,b,Pso,ta,to)+Pso];
@@ -169,8 +171,8 @@ function Chart2(ps){
     function drawCrosshairs() {
         var data = new google.visualization.DataTable();
         data.addColumn('number', 't');
-        data.addColumn('number', 'ps');
         data.addColumn('number', 'Pso');
+        data.addColumn('number', 'Ps');
 
 
         data.addRows(ps);
