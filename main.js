@@ -21,10 +21,11 @@ function process(){
     //outputData.sort(sortFunction);
     var data = transposeJSON(graphData);
     Chart1(data,target[0]);
-    var b=bfinder(input,input2,data[target[0]][4],data[target[0]][5],data[target[0]][2],data[target[0]][6],data[target[0]][7]);
+    var b1=bfinder(data[target[0]][5],data[target[0]][2],data[target[0]][6],data[target[0]][7]);
+    var b2=bfinder(data[target[0]][5],data[target[0]][1],data[target[0]][6],data[target[0]][7]);
     present(outputData);
-    var ps = PointCreator(data[target[0]][4],1013,data[target[0]][2],data[target[0]][6],data[target[0]][7],b);
-    Chart2(ps);
+    var points = PointCreator(data[target[0]][4],1013,data[target[0]][2],data[target[0]][6],data[target[0]][7],b1,b2);
+    Chart2(points);
 }
 
 function present(outputData){
@@ -117,20 +118,20 @@ function Chart1(graphData,row){
     }
 }
 
-function bfinder(input,m,Pr,Pso,Is,ta,to){
-    var b1=0.1;
+function bfinder(Pso,input,ta,to){
+    var b1=0.0001;
     var b2=20;
     var proximity=0.00001;
     var plot;
     plot=integral(b2,Pso,ta,to,proximity);
-    while(Math.abs(Is-plot)>1){
+    while(Math.abs(input-plot)>1){
         plot=integral((b2+b1)/2,Pso,ta,to,proximity);
-        if(Is<plot){
+        if(input<plot){
             b1=(b2+b1)/2;
         }else{
             b2=(b2+b1)/2;
         }
-       console.log(Is,plot,b1,b2);
+       console.log(input,plot,b1,b2);
     }
     return (b2+b1)/2;
 }
@@ -150,22 +151,22 @@ function equation(t,b,Pso,ta,to){
 
 
 
-function PointCreator(Pr,Pso,Is,ta,to,b){
-    var ps=[];
-    ps[0]=[0,Pso,Pso];
-    ps[1]=[ta,Pso,Pso];
-    ps[2]=[ta,Pso,0+Pso];
+function PointCreator(Pr,Pso,Is,ta,to,b1,b2){
+    var points=[];
+    points[0]=[0,Pso,Pso,Pso];
+    points[1]=[ta,Pso,Pso,Pso];
+    points[2]=[ta,Pso,0+Pso,0+Pso];
 
     var i =3;
     var step = to/99;
     for (t=ta;t<ta+to;t=t+step){
-        ps[i]=[t,Pso,equation(t,b,Pso,ta,to)+Pso];
+        points[i]=[t,Pso,equation(t,b1,Pso,ta,to)+Pso,equation(t,b2,Pso,ta,to)+Pso];
         i++;
     }
-    return ps;
+    return points;
 }
 
-function Chart2(ps){
+function Chart2(points){
     google.charts.load('current', {packages: ['corechart', 'line']});
     google.charts.setOnLoadCallback(drawCrosshairs);
     function drawCrosshairs() {
@@ -173,9 +174,10 @@ function Chart2(ps){
         data.addColumn('number', 't');
         data.addColumn('number', 'Pso');
         data.addColumn('number', 'Ps');
+        data.addColumn('number', 'Pr');
 
 
-        data.addRows(ps);
+        data.addRows(points);
 
         var options = {
             hAxis: {
