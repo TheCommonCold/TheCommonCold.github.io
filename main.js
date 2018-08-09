@@ -22,7 +22,7 @@ function process(){
     var data = transposeJSON(graphData);
     Chart1(data,target[0]);
     var b1=bfinder(data[target[0]][5],data[target[0]][2],data[target[0]][6],data[target[0]][7]);
-    var b2=bfinder(data[target[0]][5],data[target[0]][1],data[target[0]][6],data[target[0]][7]);
+    var b2=bfinder(data[target[0]][4],data[target[0]][1],data[target[0]][6],data[target[0]][7]);
     present(outputData);
     var points = PointCreator(data[target[0]][4],1013,data[target[0]][2],data[target[0]][6],data[target[0]][7],b1,b2);
     Chart2(points);
@@ -118,14 +118,14 @@ function Chart1(graphData,row){
     }
 }
 
-function bfinder(Pso,input,ta,to){
+function bfinder(P,input,ta,to){
     var b1=0.0001;
     var b2=20;
     var proximity=0.00001;
     var plot;
-    plot=integral(b2,Pso,ta,to,proximity);
+    plot=integral(b2,P,ta,to,proximity);
     while(Math.abs(input-plot)>1){
-        plot=integral((b2+b1)/2,Pso,ta,to,proximity);
+        plot=integral((b2+b1)/2,P,ta,to,proximity);
         if(input<plot){
             b1=(b2+b1)/2;
         }else{
@@ -145,8 +145,8 @@ function integral(b,Pso,ta,to,proximity){
     return result;
 }
 
-function equation(t,b,Pso,ta,to){
-    return (Pso*(1-((t-ta)/to))*Math.pow(Math.E,(-b*((t-ta)/to))));
+function equation(t,b,P,ta,to){
+    return (P*(1-((t-ta)/to))*Math.pow(Math.E,(-b*((t-ta)/to))));
 }
 
 
@@ -160,7 +160,7 @@ function PointCreator(Pr,Pso,Is,ta,to,b1,b2){
     var i =3;
     var step = to/99;
     for (t=ta;t<ta+to;t=t+step){
-        points[i]=[t,Pso,equation(t,b1,Pso,ta,to)+Pso,equation(t,b2,Pso,ta,to)+Pso];
+        points[i]=[t,Pso,equation(t,b1,Pso,ta,to)+Pso,equation(t,b2,Pr,ta,to)+Pso];
         i++;
     }
     return points;
