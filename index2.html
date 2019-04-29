@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<title>Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="p5.js/p5.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="p5.js/addons/p5.dom.min.js"></script>
+<script src="p5.js/addons/p5.sound.min.js"></script>
+<script src="Chart.js"></script>
+<script src="graphdata.js"></script>
+<script src="main.js"></script>
+<style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+</style>
+<body>
+
+<!-- Header -->
+<header class="w3-container w3-white w3-center" style="padding:16px 16px">
+    <h1 class="w3-margin w3-jumbo">Blast wave properties according to UFC</h1>
+    <div class="w3-xlarge w3-center w3-container">
+        <div class="w3-content">
+            <div class="w3-half">
+                <form class="w3-center w3-margin">
+                    <label>Distance</label>
+                    <input class="w3-input" id="input1" type="text">
+                    <input id="InputType1" type="radio" name="input" value="imperial1" checked> Imperial[ft] </br>
+                    <input type="radio" name="input" value="metric1"> Metric [m]
+                </form>
+            </div>
+            <div class="w3-half">
+                <form class="w3-center w3-margin">
+                    <label>Mass</label>
+                    <input class="w3-input" id="input2" type="text">
+                    <input id="InputType2" type="radio" name="input" value="imperial2" checked> Imperial[lb] </br>
+                    <input type="radio" name="input" value="metric2"> Metric [kg]
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="w3-xlarge w3-center w3-container">
+        <button onclick="process()" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Calculate</button>
+    </div>
+    <div class="w3-xlarge w3-center w3-container">
+        Output:
+        <input id="OutputType1" type="radio" name="output" value="imperial3" checked> I
+        <input type="radio" name="output" value="metric3"> M
+    </div>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-container">
+        <div class="w3-half" id="chart_div"></div>
+        <div class="w3-half" id="chart_div2"></div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+    <div class="w3-content w3-quarter">
+        <h5 class="w3-leftbar w3-border-blue" id="result1.1">
+        </h5>
+        <h5 class="w3-leftbar w3-border-red" id="result1.2">
+        </h5>
+    </div>
+    <div class="w3-content w3-quarter">
+        <h5 class="w3-leftbar" style="border-color: orange!important" id="result2.1">
+        </h5>
+        <h5 class="w3-leftbar w3-border-green" id="result2.2">
+        </h5>
+    </div>
+    <div class="w3-content w3-quarter">
+        <h5 class="w3-leftbar" style="border-color: purple!important" id="result3.1">
+        </h5>
+        <h5 class="w3-leftbar w3-border-blue" id="result3.2">
+        </h5>
+    </div>
+    <div class="w3-content w3-quarter">
+        <h5 class="w3-leftbar w3-border-red" id="result4.1">
+        </h5>
+        <h5 class="w3-leftbar w3-border-green" id="result4.2">
+        </h5>
+    </div>
+</div>
+
+
+<!-- Footer -->
+
+</body>
+</html>
