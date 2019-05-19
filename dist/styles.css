@@ -1,0 +1,234 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  padding: 0;
+  margin: 0;
+  box-sizing: padding-box; }
+
+body {
+  text-align: center; }
+
+#title {
+  margin: 0;
+  margin-top: 100px;
+  font-size: 80px; }
+
+.button {
+  margin: 5px 5px 5px 5px;
+  padding: 5px 20px 5px 20px;
+  border-radius: 25px;
+  color: #077186;
+  background-color: white;
+  /* Green */
+  border: 2px solid #077186;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px; }
+
+#show-more {
+  margin: 0;
+  display: none;
+  color: white;
+  background-color: #074f57;
+  height: 100%;
+  text-align: center;
+  font-size: 32px;
+  border: 2px solid #074F57; }
+
+#show-loader {
+  display: none;
+  width: 40px; }
+
+#gallery {
+  padding: 0 20px 0 20px; }
+
+#loader {
+  margin-top: 300px;
+  width: 70px;
+  height: 70px; }
+
+#show-loader {
+  width: 40px;
+  height: 40px; }
+
+.Highlight {
+  background-color: #077186;
+  color: white; }
+
+.button:hover:not(.Highlight) {
+  background-color: rgba(24, 128, 150, 0.24);
+  color: white; }
+
+.image {
+  grid-row: span 3; }
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; }
+
+.animateright {
+  position: relative;
+  animation: animateright 0.4s; }
+
+@keyframes animateright {
+  from {
+    right: -300px;
+    opacity: 0; }
+  to {
+    right: 0;
+    opacity: 1; } }
+
+#bottom-fakegrid {
+  grid-auto-rows: 90px; }
+
+.grid-container {
+  padding-bottom: 20px;
+  margin: 0 auto;
+  --content-width: 96vw;
+  --gap: 20px;
+  --columns: 12;
+  --row-size: calc(( var(--content-width) - (var(--gap) * (var(--columns) - 1))) / var(--columns));
+  display: grid;
+  max-width: 1400px;
+  min-width: var(--content-width);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: var(--row-size);
+  grid-auto-columns: var(--row-size);
+  grid-column-gap: var(--gap);
+  grid-row-gap: var(--gap); }
+
+@media only screen and (min-width: 1456px) {
+  .grid-container {
+    --content-width: 1400px; } }
+
+.col-1 {
+  grid-column: span 1; }
+
+.col-2 {
+  grid-column: span 2; }
+
+.col-3 {
+  grid-column: span 3; }
+
+.col-4 {
+  grid-column: span 4; }
+
+.col-5 {
+  grid-column: span 5; }
+
+.col-6 {
+  grid-column: span 6; }
+
+.col-7 {
+  grid-column: span 7; }
+
+.col-8 {
+  grid-column: span 8; }
+
+.col-9 {
+  grid-column: span 9; }
+
+.col-10 {
+  grid-column: span 10; }
+
+.col-11 {
+  grid-column: span 11; }
+
+.col-12 {
+  grid-column: span 12; }
+
+@media only screen and (max-width: 768px) {
+  #bottom-fakegrid {
+    grid-auto-rows: 60px; }
+  #fake-div {
+    display: none; }
+  .button {
+    font-size: 14px;
+    margin: 3px 3px 3px 3px; }
+  #show-more {
+    font-size: 24px; }
+  #title {
+    margin-top: 30px;
+    font-size: 50px; }
+  .grid-container {
+    --columns: 4;
+    grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .col-3 {
+    grid-column: span 2; }
+  .col-6 {
+    grid-column: span 4; }
+  .image {
+    grid-row: span 2; }
+  .mobile-streach {
+    grid-column: span 4;
+    grid-row: span 2; } }
+
+.circle-loader {
+  margin: 0 auto;
+  position: relative; }
+
+.circle-loader .circle:before {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+  height: 15%;
+  background-color: #074F57;
+  border-radius: 100%;
+  animation: circleDelay 0.8s infinite ease-in-out both; }
+
+.circle-loader .circle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+.circle-loader .circle2:before {
+  animation-delay: -0.7s; }
+
+.circle-loader .circle3:before {
+  animation-delay: -0.6s; }
+
+.circle-loader .circle4:before {
+  animation-delay: -0.5s; }
+
+.circle-loader .circle5:before {
+  animation-delay: -0.4s; }
+
+.circle-loader .circle6:before {
+  animation-delay: -0.3s; }
+
+.circle-loader .circle7:before {
+  animation-delay: -0.2s; }
+
+.circle-loader .circle8:before {
+  animation-delay: -0.1s; }
+
+.circle-loader .circle2 {
+  transform: rotate(45deg); }
+
+.circle-loader .circle3 {
+  transform: rotate(90deg); }
+
+.circle-loader .circle4 {
+  transform: rotate(135deg); }
+
+.circle-loader .circle5 {
+  transform: rotate(180deg); }
+
+.circle-loader .circle6 {
+  transform: rotate(225deg); }
+
+.circle-loader .circle7 {
+  transform: rotate(270deg); }
+
+.circle-loader .circle8 {
+  transform: rotate(315deg); }
+
+@keyframes circleDelay {
+  0%, 15% {
+    opacity: 0; }
+  16%, 100% {
+    opacity: 1; } }
