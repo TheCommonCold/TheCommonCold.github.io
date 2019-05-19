@@ -19,7 +19,6 @@
         .header {
             grid-area: header;
             background-color: #f1f1f1;
-            padding: 30px;
             text-align: center;
             font-size: 35px;
         }
@@ -32,9 +31,9 @@
             grid-template-areas:
                     'sidenav header header'
                     'sidenav middle right'
-                    'footer footer footer';
-            grid-template-rows: 200px 1fr 80px;
-            grid-template-columns: 200px 1fr 200px;
+                    'sidenav footer footer';
+            grid-template-rows: 1fr 1fr 50px;
+            grid-template-columns: 150px 1fr 150px;
         }
 
         .partners{
@@ -51,13 +50,18 @@
             grid-template-areas:
                     'celltitle'
                     'text';
-            grid-template-rows: 100px 1fr ;
+            grid-template-rows: 30px 1fr ;
         }
 
+        .links{
+            color: white;
+            text-align: center;
+            height: 30px;
+            background-color: #4a4a4b;
+        }
         .sidenav {
             display: grid;
             grid-area: sidenav;
-            height: 100%;
             background-color: #111;
         }
 
@@ -108,7 +112,6 @@
 
         .text{
             padding: 40px;
-            font-size: 20px;
             grid-area: text;
         }
 
@@ -132,14 +135,18 @@
 
 <div class="grid-container">
     <div class="header">
-        <img src="logo.png" alt="logo">
+        <img src="logo.png" alt="logo" style="height: auto;width: 50%;">
     </div>
     <div class="sidenav">
-        <a href="#">Link</a>
-        <a href="#">Link</a>
-        <a href="#">Link</a>
+        <div style="display: grid;">
+            <div class="links"><h3 style="margin: 5px">LINKS</h3></div>
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+        </div>
         <div class="partners">
-            <div class="celltitle" id="partners"><h3>PARTNERS</h3></div>
+            <div class="celltitle" id="partners"><h3 style="margin: 5px">PARTNERS</h3></div>
             <div class="text" style="padding: 5px">
                 <p>The University of Manchester</p>
                 <p>Universität der Bundeswehr München</p>
@@ -151,7 +158,7 @@
     </div>
 
     <div class="middle" style="background-color:#f1f1f1;">
-        <div class="celltitle"><h2>WELCOME</h2></div>
+        <div class="celltitle"><h3  style="margin: 5px">WELCOME</h3></div>
         <div class="text">
             <p>The International Association of Protective Structures (IAPS) has been formed for the purpose of promoting research and development associated with Protective Structures in Civil Engineering. Primary objectives are: bringing experts together working in the field of PS, being the umbrella for different actions, establishing an International Conference on Protective Structures (ICPS) to be held every two years, promotion of other professional activities, and support the publications of the International Journal of Protective Structures (IJPS). ICPS will address all relevant aspects of the subject of protective structures of the built environment, including structural mechanics, soil mechanics, traffic engineering, waterways as well as safety studies and risk analysis in both research and practice. Authors are encouraged to submit updated papers to the International Journal of Protective Structures, which is well known as the only Journal on Protective Structures worldwide.
             </p>
@@ -164,11 +171,11 @@
             <p>Werner-Heisenberg-Weg 39</p>
             <p>85577 Neubiberg</p>
 
-            <img src="logo_homepage.png" alt="logo">
+            <img src="logo_homepage.png" alt="logo" style="height: auto;width: 70%;">
         </div>
     </div>
     <div class="right" style="background-color:#f1f1f1;">
-        <div class="celltitle"><h2>NEWSLETTER</h2></div>
+        <div class="celltitle"><h3  style="margin: 5px">NEWS</h3></div>
         <div class="text">
             Sign up to receive updates about IAPS
         </div>

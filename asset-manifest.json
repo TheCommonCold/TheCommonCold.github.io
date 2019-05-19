@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/React-RPG-Engine/static/css/main.11475afe.chunk.css",
+    "main.js": "/React-RPG-Engine/static/js/main.53854af1.chunk.js",
+    "main.js.map": "/React-RPG-Engine/static/js/main.53854af1.chunk.js.map",
+    "runtime~main.js": "/React-RPG-Engine/static/js/runtime~main.15048544.js",
+    "runtime~main.js.map": "/React-RPG-Engine/static/js/runtime~main.15048544.js.map",
+    "static/js/2.158f2d9c.chunk.js": "/React-RPG-Engine/static/js/2.158f2d9c.chunk.js",
+    "static/js/2.158f2d9c.chunk.js.map": "/React-RPG-Engine/static/js/2.158f2d9c.chunk.js.map",
+    "index.html": "/React-RPG-Engine/index.html",
+    "precache-manifest.b55d27261b227f1ddee60706245d43d6.js": "/React-RPG-Engine/precache-manifest.b55d27261b227f1ddee60706245d43d6.js",
+    "service-worker.js": "/React-RPG-Engine/service-worker.js",
+    "static/css/main.11475afe.chunk.css.map": "/React-RPG-Engine/static/css/main.11475afe.chunk.css.map",
+    "static/media/logo.svg": "/React-RPG-Engine/static/media/logo.5d5d9eef.svg"
+  }
+}
