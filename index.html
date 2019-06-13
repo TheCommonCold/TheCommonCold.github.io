@@ -1,1 +1,193 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="shortcut icon" href="/React-RPG-Engine/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><link rel="manifest" href="/React-RPG-Engine/manifest.json"/><title>React App</title><link href="/React-RPG-Engine/static/css/main.11475afe.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(l){function e(e){for(var r,n,t=e[0],o=e[1],u=e[2],i=0,f=[];i<t.length;i++)n=t[i],c[n]&&f.push(c[n][0]),c[n]=0;for(r in o)Object.prototype.hasOwnProperty.call(o,r)&&(l[r]=o[r]);for(s&&s(e);f.length;)f.shift()();return p.push.apply(p,u||[]),a()}function a(){for(var e,r=0;r<p.length;r++){for(var n=p[r],t=!0,o=1;o<n.length;o++){var u=n[o];0!==c[u]&&(t=!1)}t&&(p.splice(r--,1),e=i(i.s=n[0]))}return e}var n={},c={1:0},p=[];function i(e){if(n[e])return n[e].exports;var r=n[e]={i:e,l:!1,exports:{}};return l[e].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=l,i.c=n,i.d=function(e,r,n){i.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(r,e){if(1&e&&(r=i(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)i.d(n,t,function(e){return r[e]}.bind(null,t));return n},i.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(r,"a",r),r},i.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},i.p="/React-RPG-Engine/";var r=window.webpackJsonp=window.webpackJsonp||[],t=r.push.bind(r);r.push=e,r=r.slice();for(var o=0;o<r.length;o++)e(r[o]);var s=t;a()}([])</script><script src="/React-RPG-Engine/static/js/2.158f2d9c.chunk.js"></script><script src="/React-RPG-Engine/static/js/main.53854af1.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        html,body{
+            height: 70%;
+            margin: 0px;
+            padding:0px;
+        }
+
+        /* Style the header */
+        .header {
+            grid-area: header;
+            background-color: #f1f1f1;
+            text-align: center;
+            font-size: 35px;
+        }
+
+        /* The grid container */
+        .grid-container {
+            height: 100%;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-areas:
+                    'sidenav header header'
+                    'sidenav middle right'
+                    'sidenav footer footer';
+            grid-template-rows: 1fr 1fr 50px;
+            grid-template-columns: 150px 1fr 150px;
+        }
+
+        .partners{
+            background-color: #111;
+            color: white;
+        }
+
+        .partners,
+        .middle,
+        .left,
+        .right {
+            padding: 0px;
+            display: grid;
+            grid-template-areas:
+                    'celltitle'
+                    'text';
+            grid-template-rows: 30px 1fr ;
+        }
+
+        .links{
+            color: white;
+            text-align: center;
+            height: 30px;
+            background-color: #4a4a4b;
+        }
+        .sidenav {
+            display: grid;
+            grid-area: sidenav;
+            background-color: #111;
+        }
+
+
+        /* Side navigation links */
+        .sidenav a {
+            color: white;
+            padding: 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color on hover */
+        .sidenav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+
+        .left{
+            grid-area:left;
+        }
+
+        /* Style the middle column */
+        .middle {
+            grid-area: middle;
+        }
+
+        /* Style the right column */
+        .right {
+            grid-area: right;
+        }
+
+        /* Style the footer */
+        .footer {
+            grid-area: footer;
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .celltitle{
+            color: white;
+            background-color: #fd2220;
+            grid-area: celltitle;
+            text-align: center;
+        }
+
+        .text{
+            padding: 40px;
+            grid-area: text;
+        }
+
+        #partners{
+            background-color: #4a4a4b;
+        }
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        /*@media (max-width: 600px) {*/
+            /*.grid-container  {*/
+                /*grid-template-areas:*/
+                        /*'header header header header header header'*/
+                        /*'left left left left left left'*/
+                        /*'middle middle middle middle middle middle'*/
+                        /*'right right right right right right'*/
+                        /*'footer footer footer footer footer footer';*/
+            /*}*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <div class="header">
+        <img src="logo.png" alt="logo" style="height: auto;width: 50%;">
+    </div>
+    <div class="sidenav">
+        <div style="display: grid;">
+            <div class="links"><h3 style="margin: 5px">LINKS</h3></div>
+            <a href="#">NEWS</a>
+            <h1>IAPS</h1>
+            <a href="#">- BOARD</a>
+            <a href="#">- HISTORY</a>
+            <a href="#">- NEWSLETTER</a>
+            <a href="#">- CONTACT</a>
+            <a href="#">SIGN UP</a>
+        </div>
+        <div class="partners">
+            <div class="celltitle" id="partners"><h3 style="margin: 5px">PARTNERS</h3></div>
+            <div class="text" style="padding: 5px">
+                <p>The University of Manchester</p>
+                <p>Universität der Bundeswehr München</p>
+                <p>The University of Newcastle</p>
+                <p>Tianjin Chengjian University</p>
+                <p>Poznań University of Technology</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="middle" style="background-color:#f1f1f1;">
+        <div class="celltitle"><h3  style="margin: 5px">WELCOME</h3></div>
+        <div class="text">
+            <p>The International Association of Protective Structures (IAPS) has been formed for the purpose of promoting research and development associated with Protective Structures in Civil Engineering. Primary objectives are: bringing experts together working in the field of PS, being the umbrella for different actions, establishing an International Conference on Protective Structures (ICPS) to be held every two years, promotion of other professional activities, and support the publications of the International Journal of Protective Structures (IJPS). ICPS will address all relevant aspects of the subject of protective structures of the built environment, including structural mechanics, soil mechanics, traffic engineering, waterways as well as safety studies and risk analysis in both research and practice. Authors are encouraged to submit updated papers to the International Journal of Protective Structures, which is well known as the only Journal on Protective Structures worldwide.
+            </p>
+            <p>Yours sincerely,</p>
+            <p>IAPS President:</p>
+            <p>Prof. Dr.-Ing. Norbert Gebbeken</p>
+            <p>Universität der Bundeswehr München</p>
+            <p>Institut für Mechanik und Statik / Labor für Ingenieurinformatik</p>
+            <p>Professur für Baustatik</p>
+            <p>Werner-Heisenberg-Weg 39</p>
+            <p>85577 Neubiberg</p>
+
+            <img src="logo_homepage.png" alt="logo" style="height: auto;width: 70%;">
+        </div>
+    </div>
+    <div class="right" style="background-color:#f1f1f1;">
+        <div class="celltitle"><h3  style="margin: 5px">NEWS</h3></div>
+        <div class="text">
+            Sign up to receive updates about IAPS
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Footer</p>
+    </div>
+</div>
+
+</body>
+</html>
