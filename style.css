@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+html,body{
+    margin: 0px;
+    padding:0px;
+}
+
+/* Style the header */
+.header {
+    grid-area: header;
+    background-color: #f1f1f1;
+    text-align: center;
+    font-size: 35px;
+}
+
+/* The grid container */
+.grid-container {
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas:
+            'sidenav header header'
+            'sidenav middle middle'
+            'sidenav footer footer';
+    grid-template-rows: auto auto 50px;
+    grid-template-columns: 170px 1fr;
+}
+
+.partners{
+    background-color: #111;
+    color: white;
+}
+
+.partners,
+.middle,
+.left,
+.right {
+    padding: 0px;
+    display: grid;
+    grid-template-areas:
+            'celltitle'
+            'text';
+    grid-template-rows: 30px 1fr ;
+}
+
+.middle,.header,.footer{
+    border: solid 1px lightgray;
+}
+
+.links{
+    color: white;
+    text-align: center;
+    height: 30px;
+    background-color: #4a4a4b;
+}
+.sidenav {
+    display: grid;
+    grid-area: sidenav;
+    background-color: #111;
+}
+
+
+/* Side navigation links */
+.sidenav a{
+    text-align: center;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color on hover */
+.sidenav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+.left{
+    grid-area:left;
+}
+
+/* Style the middle column */
+.middle {
+    grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+    grid-area: right;
+}
+
+/* Style the footer */
+.footer {
+    grid-area: footer;
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+}
+
+.celltitle{
+    color: white;
+    background-color: #4a4a4b;
+    grid-area: celltitle;
+    text-align: center;
+}
+
+.text{
+    padding: 20px;
+    grid-area: text;
+}
+
+.main-text{
+    border: solid 1px lightgray;
+    background-color: white;
+    margin: 0 auto;
+    grid-area: text;
+    max-width: 1024px;
+}
+
+.content{
+    padding: 20px;
+}
+
+#main-line{
+    background-color: #fd2220;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+/*@media (max-width: 600px) {*/
+/*.grid-container  {*/
+/*grid-template-areas:*/
+/*'header header header header header header'*/
+/*'left left left left left left'*/
+/*'middle middle middle middle middle middle'*/
+/*'right right right right right right'*/
+/*'footer footer footer footer footer footer';*/
+/*}*/
+/*}*/
