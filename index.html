@@ -1,62 +1,141 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="style.css">
-</head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="script.js"></script>
 <body>
 
-<div class="grid-container">
-    <div class="header">
-        <img src="logo.png" alt="logo" style="height: auto;width: 50%;">
-    </div>
-    <div class="sidenav">
-        <div style="display: grid;">
-            <div class="links"><h3 style="margin: 5px">LINKS</h3></div>
-            <a href="./index.html">NEWS</a>
-            <a href="./board.html">BOARD</a>
-            <a href="./history.html">HISTORY</a>
-            <a href="./newsletter.html">NEWSLETTER</a>
-            <a href="./contact.html">CONTACT</a>
-            <a href="./signup.html">SIGN UP</a>
+<!-- Navbar (sit on top) -->
+<div class="header">
+    <div class="menu">
+        <a href="#home" class="button">Anna Gleń</a>
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="links">
+            <a href="#projects" class="button"  onclick="hideMenu()">Projects</a>
+            <a href="#about" class="button"  onclick="hideMenu()">About</a>
+            <a href="#contact" class="button"  onclick="hideMenu()">Contact</a>
         </div>
-        <div class="partners">
-            <div class="celltitle"><h3 style="margin: 5px">PARTNERS</h3></div>
-            <div class="text" style="padding: 5px">
-                <p>The University of Manchester</p>
-                <p>Universität der Bundeswehr München</p>
-                <p>The University of Newcastle</p>
-                <p>Tianjin Chengjian University</p>
-                <p>Poznań University of Technology</p>
+              <a href="javascript:void(0);" class="icon" onclick="showMenu()">
+                <i class="fa fa-bars"></i>
+              </a>
+    </div>
+</div>
+
+<header class="intro" style="max-width:1500px;" id="home">
+    <img src="https://www.w3schools.com/w3images/architect.jpg" alt="Architecture">
+    <div class="intro-title">
+        <h1 class="logo">Anna Gleń</h1>
+    </div>
+</header>
+<!--Light boxes-->
+<div id="modal-1" class="modal">
+    <span class="close cursor" onclick="closeModal('modal-1')">&times;</span>
+    <div class="modal-content">
+  
+      <div class="slides-modal-1">
+        <div class="numbertext">1 / 2</div>
+        <img src="https://www.w3schools.com/w3images/house2.jpg" style="width:100%">
+      </div>
+  
+      <div class="slides-modal-1">
+        <div class="numbertext">2 / 2</div>
+        <img src="https://www.w3schools.com/w3images/house3.jpg" style="width:100%">
+      </div>
+
+  
+      <!-- Next/previous controls -->
+      <a class="prev" onclick="plusSlides(-1,'modal-1')">&#10094;</a>
+      <a class="next" onclick="plusSlides(1,'modal-1')">&#10095;</a>
+  
+      <!-- Caption text -->
+      <div class="caption-container">
+        <p id="caption-modal-1"></p>
+      </div>
+  
+      <!-- Thumbnail image controls -->
+      <div class="column">
+        <img class="image-modal-1" src="https://www.w3schools.com/w3images/house2.jpg" onclick="currentSlide(1,'modal-1')" alt="Nature">
+      </div>
+  
+      <div class="column">
+        <img class="image-modal-1" src="https://www.w3schools.com/w3images/house3.jpg" onclick="currentSlide(2,'modal-1')" alt="Snow">
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Page content -->
+<div class="content">
+    <!-- Project Section -->
+    <div  id="projects" class="dummy-scroll"></div>
+    <div class="section">
+        <h3 class="title">Projects</h3>
+
+        <div class="grid-row" onclick="openModal('modal-1');currentSlide(1,'modal-1')">
+            <div class="large-grid-item">
+                <img class="grid-images" src="https://www.w3schools.com/w3images/house5.jpg">
             </div>
-        </div>
-    </div>
-
-    <div class="middle" style="background-color:#f1f1f1;">
-        <div class="celltitle" id="main-line"></div>
-        <div class="content">
-            <div class="main-text">
-                <div class="celltitle"><h3 style="margin: 0px">WELCOME</h3></div>
-                <div class="text">
-                    <p>The International Association of Protective Structures (IAPS) has been formed for the purpose of promoting research and development associated with Protective Structures in Civil Engineering. Primary objectives are: bringing experts together working in the field of PS, being the umbrella for different actions, establishing an International Conference on Protective Structures (ICPS) to be held every two years, promotion of other professional activities, and support the publications of the International Journal of Protective Structures (IJPS). ICPS will address all relevant aspects of the subject of protective structures of the built environment, including structural mechanics, soil mechanics, traffic engineering, waterways as well as safety studies and risk analysis in both research and practice. Authors are encouraged to submit updated papers to the International Journal of Protective Structures, which is well known as the only Journal on Protective Structures worldwide.
-                    </p>
-                    <p>Yours sincerely,</p>
-                    <p>IAPS President:</p>
-                    <p>Prof. Dr.-Ing. Norbert Gebbeken</p>
-                    <p>Universität der Bundeswehr München</p>
-                    <p>Institut für Mechanik und Statik / Labor für Ingenieurinformatik</p>
-                    <p>Professur für Baustatik</p>
-                    <p>Werner-Heisenberg-Weg 39</p>
-                    <p>85577 Neubiberg</p>
-
-                    <img src="logo_homepage.png" alt="logo" style="height: auto;width: 70%;">
+            <div class="small-grid-item">
+                <div class="project-titles text-field"><h2>Rzecz</h2></div>
+                <div class="text-field">
+                    <p>Bla bla bla bla bla bla bla bla. Bla bla bla bla bla bla bla bla. Bla bla bla bla bla bla bla bla. </p>
                 </div>
             </div>
         </div>
+        <div class="grid-row">
+            <div class="small-grid-item">
+                <div class="project-titles text-field"><h2>Rzecz</h2></div>
+                <div class="text-field">
+                    <p>Bla bla bla bla bla bla bla bla. Bla bla bla bla bla bla bla bla. Bla bla bla bla bla bla bla bla. Bla bla bla bla bla bla bla bla. Bla bla bla bla bla bla bla bla. </p>
+                </div>
+            </div>
+                <div class="large-grid-item">
+                <img class="grid-images grid-images-left" src="https://www.w3schools.com/w3images/house4.jpg">
+            </div>
+
+        </div>
     </div>
 
-    <div class="footer">
+
+
+    <!-- About Section -->
+    <div  id="about" class="dummy-scroll"></div>
+    <div class="section" >
+        <h3 class="title">About</h3>
+        <div class="text-field">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        </div>
     </div>
+
+
+    <!-- Contact Section -->
+    <div  id="contact" class="dummy-scroll"></div>
+    <div class="section" >
+        <h3 class="title">Contact</h3>
+        <p>Lets get in touch and talk about your next project.</p>
+    </div>
+
+    <!-- Image of location/map -->
+    <div class="section">
+        <img src="https://www.w3schools.com/w3images/map.jpg" style="width:100%">
+    </div>
+
+    <!-- End page content -->
 </div>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <p>Created by Dziubik</p>
+</footer>
 
 </body>
 </html>
